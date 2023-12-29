@@ -12,6 +12,7 @@ export const ProductoDetalles = () => {
   const [tallaSelected, setTallaSelected] = useState("");
   const [validTallaSelected, setValidTallaSelected] = useState(false);
   const navigate = useNavigate();
+  const metaTag = document.querySelector('meta[property="og:image"]');
 
   const [isImageLoaded, setIsImageLoaded] = useState(true);
 
@@ -36,7 +37,11 @@ export const ProductoDetalles = () => {
       setValidTallaSelected(false);
     }
     window.scrollTo(0, 0);
-
+    metaTag.content = 'https://picsum.photos/id/866/200/200';
+    if (metaTag) {
+      // Actualiza el contenido de la etiqueta con la nueva URL de la imagen
+      metaTag.content = 'nuevaURLdeImagen.jpg';
+    }
   }, [productId, product, navigate]);
 
   const handleSelectionTallaChange = (e) => {
