@@ -62,7 +62,7 @@ export const ProductoDetalles = () => {
           mensajeConUrl
         )}`;
 
-        window.open(whatsappLink, "_blank");
+        window.open(whatsappLink, "_self");
       }
     } else {
       console.log("entra");
@@ -77,7 +77,7 @@ export const ProductoDetalles = () => {
         mensajeConUrl
       )}`;
 
-      window.open(whatsappLink, "_blank");
+      window.open(whatsappLink, "_self");
     }
   };
 
