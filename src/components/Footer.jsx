@@ -120,7 +120,7 @@ export const Footer = () => {
 
       <div className="flex flex-col items-center sm:flex-row sm:justify-between gap-4 my-4 x">
         <nav>
-          <ul className="flex flex-col sm:flex-row sm:gap-6">
+          <ul className="flex flex-col items-center sm:items-start sm:flex-row sm:gap-6">
             <li>
               <Link to={HOME}>Inicio</Link>
             </li>
