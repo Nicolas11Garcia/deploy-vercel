@@ -88,12 +88,13 @@ export const ProductoDetalles = () => {
         <></>
       ) : (
         <>
-          <Helmet>
-            <meta property="og:title" content='Tendencias Mym - Producto' />
-            <meta property="og:image" content="https://picsum.photos/id/866/200/200" />
-            <meta property="og:url" content={window.location.href} />
-            <meta property="og:type" content="product.item" />
-          </Helmet>
+          <meta property="og:title" content="Tendencias Mym - Producto" />
+          <meta
+            property="og:image"
+            content="https://picsum.photos/id/866/200/200"
+          />
+          <meta property="og:url" content={window.location.href} />
+          <meta property="og:type" content="product.item" />
           <div className="flex flex-col justify-between min-h-screen">
             <div className="grid grid-cols-1 px-6 sm:grid-cols-2 gap-6 max-w-6xl w-full mx-auto my-14">
               <div>
