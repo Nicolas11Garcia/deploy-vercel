@@ -67,7 +67,7 @@ export const NavBar = () => {
               <img
                 width={90}
                 alt="tendencias-mym-logo"
-                src="../../../public/logo.png"
+                src="logo.png"
                 loading="lazy"
               />
             </Link>
@@ -86,7 +86,7 @@ export const NavBar = () => {
             <img
               width={90}
               alt="tendencias-mym-logo"
-              src="../../../public/logo.png"
+              src="logo.png"
               loading="lazy"
               onClick={indexPageTop}
             />

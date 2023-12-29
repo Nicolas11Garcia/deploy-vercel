@@ -37,7 +37,7 @@ export const Footer = () => {
         <img
           width={150}
           alt="tendencias-mym-logo-footer"
-          src="../../../public/logo.png"
+          src="./logo.png"
           loading="lazy"
         />
         {/* REDES */}
