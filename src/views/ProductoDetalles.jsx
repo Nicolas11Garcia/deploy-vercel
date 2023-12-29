@@ -13,6 +13,7 @@ export const ProductoDetalles = () => {
   const [tallaSelected, setTallaSelected] = useState("");
   const [validTallaSelected, setValidTallaSelected] = useState(false);
   const navigate = useNavigate();
+  const metaTag = document.querySelector('meta[property="og:image"]');
 
   const [isImageLoaded, setIsImageLoaded] = useState(true);
 
@@ -37,6 +38,7 @@ export const ProductoDetalles = () => {
       setValidTallaSelected(false);
     }
     window.scrollTo(0, 0);
+    metaTag.content = 'https://picsum.photos/id/866/200/200';
   }, [productId, product, navigate]);
 
   const handleSelectionTallaChange = (e) => {
@@ -88,13 +90,6 @@ export const ProductoDetalles = () => {
         <></>
       ) : (
         <>
-          <meta property="og:title" content="Tendencias Mym - Producto" />
-          <meta
-            property="og:image"
-            content="https://picsum.photos/id/866/200/200"
-          />
-          <meta property="og:url" content={window.location.href} />
-          <meta property="og:type" content="product.item" />
           <div className="flex flex-col justify-between min-h-screen">
             <div className="grid grid-cols-1 px-6 sm:grid-cols-2 gap-6 max-w-6xl w-full mx-auto my-14">
               <div>
