@@ -87,9 +87,9 @@ export const ProductoDetalles = () => {
         <></>
       ) : (
         <div className="flex flex-col justify-between min-h-screen">
-          <div className="grid grid-cols-1 px-6 sm:grid-cols-2 gap-6 max-w-6xl mx-auto my-14">
+          <div className="grid grid-cols-1 px-6 sm:grid-cols-2 gap-6 max-w-6xl w-full mx-auto my-14">
             <div>
-              {isImageLoaded ? <SkeletonImage /> : null }
+              {isImageLoaded ? <SkeletonImage /> : null}
               <Image
                 isZoomed={true}
                 src={product.image}
@@ -104,9 +104,29 @@ export const ProductoDetalles = () => {
                   {product.name}
                 </h1>
               ) : null}
-              <p className="uppercase text-xl">
-                ${product.price.toLocaleString("es-CL")}
-              </p>
+              {/*PRECIO */}
+              <div className="flex gap-3">
+                {product.oferta === 1 ? (
+                  <p className="uppercase text-xl text-red-500">
+                    ${product.precio_oferta.toLocaleString("es-CL")}
+                  </p>
+                ) : (
+                  null
+                )}
+                <p
+                  className={`uppercase text-xl ${
+                    product.oferta === 1 ? "line-through text-[#71717A]" : null
+                  }`}
+                >
+                  ${product.price.toLocaleString("es-CL")}
+                </p>
+              </div>
+
+              {/*Horma */}
+              <div>
+                  <p className="text-base mt-4">{product.horma}</p>
+              </div>
+
               <div className="flex flex-wrap gap-2 items-center my-14">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

@@ -55,7 +55,7 @@ export const NavBar = () => {
 
   return (
     <>
-      <div className="bg-black h-[51px] flex justify-center items-center">
+      <div className="bg-[#C90071] h-[51px] flex justify-center items-center">
         <p className="text-white text-center text-sm">
           UBICADOS EN RENGO CON ENVÍOS A TODO CHILE
         </p>
@@ -67,7 +67,7 @@ export const NavBar = () => {
               <img
                 width={90}
                 alt="tendencias-mym-logo"
-                src="logo.png"
+                src="/logo.png"
                 loading="lazy"
               />
             </Link>
@@ -86,7 +86,7 @@ export const NavBar = () => {
             <img
               width={90}
               alt="tendencias-mym-logo"
-              src="logo.png"
+              src="/logo.png"
               loading="lazy"
               onClick={indexPageTop}
             />

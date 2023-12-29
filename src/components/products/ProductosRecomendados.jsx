@@ -10,7 +10,7 @@ export const ProductosRecomendados = ({ id }) => {
         <h2 className="text-center text-lg uppercase">Más productos</h2>
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-x-2 gap-y-8 mx-auto px-6 my-12">
+      <div className="grid grid-cols-2 md:grid-cols-3 w-full gap-x-2 gap-y-8 max-w-6xl mx-auto px-6 my-12">
         {products.map((product, index) => {
           if (product.id != id) {
             return (
@@ -20,6 +20,8 @@ export const ProductosRecomendados = ({ id }) => {
                 image={product.image}
                 title={product.name}
                 precio={product.price}
+                oferta={product.oferta}
+                precioOferta={product.precio_oferta}
               />
             );
           }

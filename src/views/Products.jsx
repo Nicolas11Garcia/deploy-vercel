@@ -9,65 +9,18 @@ import { products } from "../ProductsApi/products";
 import { CardProduct } from "../components/products/CardProduct";
 
 export const Product = forwardRef((props, ref) => {
-  const [sortedProducts, setSortedProducts] = useState([...products]);
-  const [ordenarPor, setOrdenarPor] = useState("");
   const [filtrarPor, setFiltrarPor] = useState("");
-
+  const [ordenarPor, setOrdenarPor] = useState("");
   const [isImageLoaded, setIsImageLoaded] = useState(false);
-  const itemsPerLoad = 9;
-
+  const itemsPerLoad = 12;
   const [visibleItems, setVisibleItems] = useState(itemsPerLoad);
-  //Categorias
-  const uniqueCategories = new Set();
 
-  useEffect(() => {
-    // Ordenar los productos cuando cambie sortedProducts
-    setSortedProducts((prevSortedProducts) => {
-      return [...prevSortedProducts].sort((a, b) => {
-        if (ordenarPor === "menor_mayor") {
-          if (a.oferta === 1 && b.oferta === 1) {
-            return a.precio_oferta - b.precio_oferta;
-          } else if (a.oferta === 1 && b.oferta !== 1) {
-            return a.precio_oferta - b.price;
-          } else if (b.oferta === 1 && a.oferta !== 1) {
-            return a.price - b.precio_oferta;
-          } else {
-            return a.price - b.price;
-          }
-        } else if (ordenarPor === "mayor_menor") {
-          if (a.oferta === 1 && b.oferta === 1) {
-            return b.precio_oferta - a.precio_oferta;
-          } else if (b.oferta === 1 && a.oferta !== 1) {
-            return b.precio_oferta - a.price;
-          } else if (b.oferta === 1 && a.oferta !== 1) {
-            return b.price - a.precio_oferta;
-          } else {
-            return b.price - a.price;
-          }
-        } else if (ordenarPor === "productos_nuevos") {
-          // Devolver el array sin cambios
-          return b.id - a.id;
-        }
-      });
-    });
-  }, [ordenarPor]);
+  const uniqueCategories = new Set();
 
   const handleLoadMore = () => {
     setVisibleItems((prevVisibleItems) => prevVisibleItems + itemsPerLoad);
     setIsImageLoaded(true);
   };
-
-  if (isImageLoaded) {
-    props.deshabilitarVerMas();
-  }
-
-  if (!isImageLoaded) {
-    props.habilitarVerMas();
-  }
-
-  if (visibleItems >= products.length) {
-    props.ocultarButton();
-  }
 
   useImperativeHandle(ref, () => ({
     childFunction,
@@ -85,13 +38,58 @@ export const Product = forwardRef((props, ref) => {
     setFiltrarPor(e.target.value);
   };
 
-  //Categorias
-  // Recorre los productos y agrega cada categoría al conjunto
   products.forEach((product) => {
     uniqueCategories.add(product.category);
   });
-  // Convierte el conjunto de categorías en un array
+
   const uniqueCategoriesArray = Array.from(uniqueCategories);
+
+  // Filtrar y ordenar productos según las condiciones
+  const filteredAndSortedProducts = products
+    .filter((product) => {
+      if (filtrarPor === "") return true;
+      if (filtrarPor === "ofertas") return product.oferta === 1;
+      return product.category === filtrarPor;
+    })
+    .sort((a, b) => {
+      if (ordenarPor === "menor_mayor") {
+        if (a.oferta === 1 && b.oferta === 1) {
+          return a.precio_oferta - b.precio_oferta;
+        } else if (a.oferta === 1 && b.oferta !== 1) {
+          return a.precio_oferta - b.price;
+        } else if (b.oferta === 1 && a.oferta !== 1) {
+          return a.price - b.precio_oferta;
+        } else {
+          return a.price - b.price;
+        }
+      } else if (ordenarPor === "mayor_menor") {
+        if (a.oferta === 1 && b.oferta === 1) {
+          return b.precio_oferta - a.precio_oferta;
+        } else if (b.oferta === 1 && a.oferta !== 1) {
+          return b.precio_oferta - a.price;
+        } else if (b.oferta === 1 && a.oferta !== 1) {
+          return b.price - a.precio_oferta;
+        } else {
+          return b.price - a.price;
+        }
+      } else if (ordenarPor === "productos_nuevos") {
+        // Devolver el array sin cambios
+        return b.id - a.id;
+      } else if (ordenarPor === "productos_antiguos") {
+        // Devolver el array sin cambios
+        return a.id - b.id;
+      }
+      // Manejar el caso por defecto o devolver 0 si no hay ninguna condición
+      return 0;
+    });
+
+  if (visibleItems >= filteredAndSortedProducts.length) {
+    props.ocultarButton();
+  }
+
+  if (visibleItems <= filteredAndSortedProducts.length) {
+    props.visibleButton();
+  }
 
   return (
     <>
@@ -110,7 +108,11 @@ export const Product = forwardRef((props, ref) => {
           <SelectItem key="" value="Ver todo">
             Ver todo
           </SelectItem>
-          <SelectItem key="ofertas" value="Solo ofertas" className="text-red-500">
+          <SelectItem
+            key="ofertas"
+            value="Solo ofertas"
+            className="text-red-500"
+          >
             Ofertas
           </SelectItem>
           {uniqueCategoriesArray.map((category, index) => (
@@ -125,62 +127,35 @@ export const Product = forwardRef((props, ref) => {
           className="max-w-[210px]"
           onChange={handleSelectionOrdenarChange}
         >
-          <SelectItem key="productos_nuevos" value="productos_nuevos">
-            Productos nuevos
-          </SelectItem>
           <SelectItem key="menor_mayor" value="menor_mayor">
             Precio, menor a mayor
           </SelectItem>
           <SelectItem key="mayor_menor" value="mayor_menor">
             Precio, mayor a menor
           </SelectItem>
+          <SelectItem key="productos_nuevos" value="productos_nuevos">
+            Productos nuevos
+          </SelectItem>
+          <SelectItem key="productos_antiguos" value="productos_antiguos">
+            Productos Antiguos
+          </SelectItem>
         </Select>
       </div>
 
       <div className="grid grid-cols-2 md:grid-cols-3 gap-x-2 gap-y-8 mx-auto">
-        {sortedProducts.slice(0, visibleItems).map((product, index) => {
-          if (filtrarPor !== "") {
-            if (filtrarPor === "ofertas") {
-              if (product.oferta === 1) {
-                return (
-                  <CardProduct
-                    key={index}
-                    id={product.id}
-                    image={product.image}
-                    title={product.name}
-                    precio={product.price}
-                    oferta={product.oferta}
-                    precioOferta={product.precio_oferta}
-                  />
-                );
-              }
-            } else if (filtrarPor === product.category) {
-              return (
-                <CardProduct
-                  key={index}
-                  id={product.id}
-                  image={product.image}
-                  title={product.name}
-                  precio={product.price}
-                  oferta={product.oferta}
-                  precioOferta={product.precio_oferta}
-                />
-              );
-            }
-          } else {
-            return (
-              <CardProduct
-                key={index}
-                id={product.id}
-                image={product.image}
-                title={product.name}
-                precio={product.price}
-                oferta={product.oferta}
-                precioOferta={product.precio_oferta}
-              />
-            );
-          }
-        })}
+        {filteredAndSortedProducts
+          .slice(0, visibleItems)
+          .map((product, index) => (
+            <CardProduct
+              key={index}
+              id={product.id}
+              image={product.image}
+              title={product.name}
+              precio={product.price}
+              oferta={product.oferta}
+              precioOferta={product.precio_oferta}
+            />
+          ))}
       </div>
     </>
   );

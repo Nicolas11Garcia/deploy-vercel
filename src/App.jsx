@@ -21,17 +21,11 @@ function App() {
     <>
       <NextUIProvider>
         <BrowserRouter>
-        {/*
           <NavBar />
-        */}
           <Routes>
-            <Route path="/" element={<Mantenimiento/>}></Route>
-            {/*
-              <Route path={HOME} element={<Home />} />
+            <Route path={HOME} element={<Home />} />
             <Route path={VERPRODUCTO} element={<ProductoDetalles />} />
             <Route path="*" element={<Error404 />} />
-  
-          */}
           </Routes>
         </BrowserRouter>
       </NextUIProvider>

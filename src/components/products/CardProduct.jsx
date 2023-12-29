@@ -27,7 +27,7 @@ export const CardProduct = ({
             <Image
               isZoomed={true}
               loading="lazy"
-              alt="Pharrell Williams Sneakers - Limited Edition"
+              alt="Tendencias mym - producto"
               src={image}
               onLoad={handleImageLoad}
               className={`max-w-[345px] w-full ${

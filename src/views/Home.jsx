@@ -5,19 +5,15 @@ import { PreguntasFrecuentes } from "../components/PreguntasFrecuentes";
 import Product from "./Products";
 
 export const Home = () => {
-  const [isLoadignButton, setIsLoadingButton] = useState(false);
   const [visibleButton, setVisibleButton] = useState(true);
   const childRef = useRef(null);
 
-  const deshabilitarVerMas = () => {
-    setIsLoadingButton(true);
-  };
-  const habilitarVerMas = () => {
-    setIsLoadingButton(false);
-  };
-
   const ocultarButton = () => {
     setVisibleButton(false);
+  };
+
+  const mostrarButton = () => {
+    setVisibleButton(true);
   };
   return (
     <>
@@ -27,21 +23,19 @@ export const Home = () => {
           <div className="px-6 max-w-6xl mx-auto" id="productos">
             <Product
               ref={childRef}
-              deshabilitarVerMas={deshabilitarVerMas}
-              habilitarVerMas={habilitarVerMas}
               ocultarButton={ocultarButton}
+              visibleButton={mostrarButton}
             />
           </div>
 
           <div
-            className={`px-6 flex justify-center ${
+            className={`px-6 flex justify-center mt-8 ${
               visibleButton ? "" : "hidden"
             }`}
           >
             <Button
-              isLoading={isLoadignButton}
               onClick={() => childRef.current.childFunction(null, "Agregar")}
-              className={`bg-primary text-white ${
+              className={`bg-[#C90071] text-white ${
                 visibleButton ? "" : "hidden"
               }`}
             >
