@@ -6,7 +6,6 @@ import { Footer } from "../components/Footer";
 import { WhatsappSVG } from "../components/WhatsappSVG";
 import { ProductosRecomendados } from "../components/products/ProductosRecomendados";
 import { SkeletonImage } from "../components/ui/skeleton/SkeletonImage";
-import { Helmet } from "react-helmet";
 
 export const ProductoDetalles = () => {
   const { id } = useParams();
@@ -38,7 +37,10 @@ export const ProductoDetalles = () => {
       setValidTallaSelected(false);
     }
     window.scrollTo(0, 0);
-    metaTag.content = 'https://picsum.photos/id/866/200/200';
+    if (metaTag) {
+      // Actualiza el contenido de la etiqueta con la nueva URL de la imagen
+      metaTag.content = "https://picsum.photos/id/866/200/200";
+    }
   }, [productId, product, navigate]);
 
   const handleSelectionTallaChange = (e) => {
