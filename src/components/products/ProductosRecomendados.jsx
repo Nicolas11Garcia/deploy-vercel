@@ -12,7 +12,7 @@ export const ProductosRecomendados = ({ id }) => {
 
       <div className="grid grid-cols-2 md:grid-cols-3 w-full gap-x-2 gap-y-8 max-w-6xl mx-auto px-6 my-12">
         {products.map((product, index) => {
-          if (product.id != id) {
+          if (index < 9 && product.id !== id) {
             return (
               <CardProduct
                 key={index}
