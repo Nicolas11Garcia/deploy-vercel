@@ -1,5 +1,113 @@
 export const products = [
   {
+    id: 278,
+    name: "",
+    price: 19990,
+    image: "/img-products/278-min.jpg",
+    category: "Zapatillas",
+    con_tallas: 0,
+    tallas: [35, 36, 37, 38, 39],
+    oferta: 0,
+    precio_oferta: 10000,
+    horma: "Hormal Normal",
+  },
+  {
+    id: 277,
+    name: "",
+    price: 22990,
+    image: "/img-products/277-min.jpg",
+    category: "Botas",
+    con_tallas: 0,
+    tallas: [35, 36, 37, 38, 39],
+    oferta: 0,
+    precio_oferta: 10000,
+    horma: "Hormal Normal",
+  },
+  {
+    id: 276,
+    name: "",
+    price: 19990,
+    image: "/img-products/276-min.jpg",
+    category: "Zapatos",
+    con_tallas: 0,
+    tallas: [35, 36, 37, 38, 39],
+    oferta: 0,
+    precio_oferta: 10000,
+    horma: "Hormal Normal",
+  },
+  {
+    id: 275,
+    name: "",
+    price: 19990,
+    image: "/img-products/275-min.jpg",
+    category: "Zapatillas",
+    con_tallas: 0,
+    tallas: [35, 36, 37, 38, 39],
+    oferta: 0,
+    precio_oferta: 10000,
+    horma: "Hormal Normal",
+  },
+  {
+    id: 274,
+    name: "",
+    price: 19990,
+    image: "/img-products/274-min.jpg",
+    category: "Zapatillas",
+    con_tallas: 0,
+    tallas: [35, 36, 37, 38, 39],
+    oferta: 0,
+    precio_oferta: 10000,
+    horma: "Hormal Chica",
+  },
+  {
+    id: 273,
+    name: "",
+    price: 22990,
+    image: "/img-products/273-min.jpg",
+    category: "Botas",
+    con_tallas: 0,
+    tallas: [35, 36, 37, 38, 39],
+    oferta: 0,
+    precio_oferta: 10000,
+    horma: "Hormal Normal",
+  },
+  {
+    id: 272,
+    name: "",
+    price: 19990,
+    image: "/img-products/272-min.jpg",
+    category: "Zapatos",
+    con_tallas: 0,
+    tallas: [35, 36, 37, 38, 39],
+    oferta: 0,
+    precio_oferta: 10000,
+    horma: "Hormal Normal",
+  },
+  {
+    id: 271,
+    name: "",
+    price: 19990,
+    image: "/img-products/271-min.jpg",
+    category: "Bucanera",
+    con_tallas: 0,
+    tallas: [35, 36, 37, 38, 39],
+    oferta: 0,
+    precio_oferta: 10000,
+    horma: "Hormal Normal",
+  },
+  {
+    id: 270,
+    name: "",
+    price: 19990,
+    image: "/img-products/270-min.jpg",
+    category: "Zapatilla",
+    con_tallas: 0,
+    tallas: [35, 36, 37, 38, 39],
+    oferta: 0,
+    precio_oferta: 10000,
+    horma: "Hormal Normal",
+  },
+  {
     id: 269,
     name: "",
     price: 14990,
@@ -1186,7 +1294,6 @@ export const products = [
     oferta: 1,
     precio_oferta: 10000,
     horma: "Hormal Normal",
-    
   },
   {
     id: 134,
@@ -1199,7 +1306,6 @@ export const products = [
     oferta: 1,
     precio_oferta: 10000,
     horma: "Hormal Normal",
-
   },
   {
     id: 133,
@@ -1212,7 +1318,6 @@ export const products = [
     oferta: 1,
     precio_oferta: 10000,
     horma: "Hormal Normal",
-
   },
   {
     id: 132,
@@ -1225,7 +1330,6 @@ export const products = [
     oferta: 1,
     precio_oferta: 10000,
     horma: "Hormal Normal",
-
   },
   {
     id: 131,
@@ -1238,7 +1342,6 @@ export const products = [
     oferta: 1,
     precio_oferta: 10000,
     horma: "Hormal Normal",
-
   },
   {
     id: 128,
@@ -1263,7 +1366,6 @@ export const products = [
     oferta: 1,
     precio_oferta: 10000,
     horma: "Hormal Normal",
-
   },
   {
     id: 125,
@@ -1276,7 +1378,6 @@ export const products = [
     oferta: 1,
     precio_oferta: 10000,
     horma: "Hormal Normal",
-
   },
   {
     id: 124,
@@ -1289,7 +1390,6 @@ export const products = [
     oferta: 1,
     precio_oferta: 10000,
     horma: "Hormal Normal",
-
   },
   {
     id: 123,
@@ -1302,7 +1402,6 @@ export const products = [
     oferta: 1,
     precio_oferta: 10000,
     horma: "Hormal Normal",
-
   },
   {
     id: 122,
@@ -1315,7 +1414,6 @@ export const products = [
     oferta: 1,
     precio_oferta: 10000,
     horma: "Hormal Normal",
-
   },
   {
     id: 118,
