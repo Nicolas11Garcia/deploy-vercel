@@ -89,7 +89,7 @@ export const ProductoDetalles = () => {
         <>
           <div className="flex flex-col justify-between min-h-screen">
             <div className="grid grid-cols-1 px-6 sm:grid-cols-2 gap-6 max-w-6xl w-full mx-auto my-14">
-              <div>
+              <div >
                 {isImageLoaded ? <SkeletonImage /> : null}
                 <Image
                   isZoomed={true}
